@@ -46,8 +46,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:onClick="ChangeSubInfo"
         app:layout_constraintBottom_toTopOf="@+id/addSubscriptionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
