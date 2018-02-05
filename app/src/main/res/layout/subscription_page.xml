@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
     tools:context="com.example.coursauxsubbook.subscriptionPage">
 
     <TextView
@@ -13,6 +17,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Subscriptions"
+        android:focusable="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +30,8 @@
         android:layout_marginLeft="16dp"
         android:onClick="ChangePage"
         android:text="Add Subscription"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/PriceTotal"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -34,7 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
-        android:text="TextView"
+        android:text="0.00"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/addSubscriptionButton"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -46,6 +55,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintBottom_toTopOf="@+id/addSubscriptionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
