@@ -17,30 +17,23 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class subscriptionPage extends AppCompatActivity {
 
     private static final String FILENAME = "newfile.sav";
-    private ListView SubscriptionListView;
-    private static ArrayList<Subscription> subscriptionlist;
+    private ListView lv;
+    private ArrayList<String> subList = new ArrayList<String>();
     private ArrayAdapter<Subscription> adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        try{
-            subscriptionlist.add(addSubscription.getNewSubscription());
-            adapter.notifyDataSetChanged();
-
-            saveInFile();
-        }catch (NullPointerException e){}
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subscription_page);
-
-        Button addSubscription = (Button) findViewById(R.id.addSubscriptionButton);
-
-        SubscriptionListView = (ListView) findViewById(R.id.SubscriptionListView);
-
     }
 
     @Override
@@ -49,28 +42,39 @@ public class subscriptionPage extends AppCompatActivity {
     }
 
     public void ChangePage(View view) {
-        Intent intent = new Intent(this, addSubscription.class);
-        startActivity(intent);
+        setContentView(R.layout.activity_add_subscription);
     }
 
-    private void saveInFile() {
-        try {
-            FileOutputStream fos = openFileOutput(FILENAME,
-                    Context.MODE_PRIVATE);
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
+    public void ChangePageBack(View view) throws ParseException {
+         /* from https://stackoverflow.com/questions/8498880/retrieving-data-from-edittext-in-android*/
+        EditText editText = (EditText) findViewById(R.id.NameFill);
+        String name = editText.getText().toString();
 
-            Gson gson = new Gson();
+        EditText editText1 = (EditText) findViewById(R.id.DateFill);
+        String dateString = editText1.getText().toString();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("DD/MM/YYYY");
+        Date date = dateFormat.parse(dateString);
 
-            gson.toJson(subscriptionlist, out);
+        EditText editText2 = (EditText) findViewById(R.id.PriceFill);
+        float price = Float.valueOf(editText2.getText().toString());
 
-            out.flush();
+        Subscription sub = new Subscription(name, date, price);
 
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        setContentView(R.layout.subscription_page);
+
+        lv = (ListView) findViewById(R.id.SubListView);
+
+        subList.add(sub.getName());
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                subList );
+
+        lv.setAdapter(arrayAdapter);
+}
+
+    public void ChangeSubInfo(View view) {
+        
     }
 }

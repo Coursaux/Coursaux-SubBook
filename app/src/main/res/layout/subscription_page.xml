@@ -23,12 +23,11 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
+        android:onClick="ChangePage"
         android:text="Add Subscription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/PriceTotal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SubscriptionListView"
-        android:onClick="ChangePage"/>
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/PriceTotal"
@@ -40,15 +39,19 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <ListView
-        android:id="@+id/SubscriptionListView"
+        android:id="@+id/SubListView"
         android:layout_width="368dp"
         android:layout_height="396dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:onClick="ChangeSubInfo"
         app:layout_constraintBottom_toTopOf="@+id/addSubscriptionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
 </android.support.constraint.ConstraintLayout>
